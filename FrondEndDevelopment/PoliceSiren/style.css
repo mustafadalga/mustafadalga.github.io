@@ -1,33 +1,40 @@
+body
+{
+	margin:0px;
+	padding: 0px;
+}
 .tasiyici
 {
-	margin-left: calc(50vw - 500px);
+	width: 80%;
+	float: left;
+	margin-left: 10%;
 	margin-top: calc(50vh - 50px);
 }
-	.kirmizi,.mavi
-	{
-		width: 500px; 
-		height: 100px;
-		float: left;
-	}
-	.kirmizi
-	{
-		border-top-left-radius: 25px;
-		border-bottom-left-radius: 25px;
-	}
-	.mavi {
-        border-top-right-radius: 25px;
-	    border-bottom-right-radius: 25px;
-	}
+.kirmizi,.mavi
+{
+	width: 50%; 
+	height: 100px;
+	float: left;
+}
+.kirmizi
+{
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
+}
+.mavi {
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
+}
 
-    body
-    {
-        animation-name: bg;
-        animation-duration: 1s;
-        animation-timing-function:ease;
-        animation-iteration-count:infinite;
-    }
-    @keyframes bg
-    {
-        0% {background: #f5f5f5 }
-        100% {transform: #fff  }
-    }	
+body
+{
+	animation-name: bg;
+	animation-duration: 1s;
+	animation-timing-function:ease;
+	animation-iteration-count:infinite;
+}
+@keyframes bg
+{
+	0% {background: #f5f5f5 }
+	100% {transform: #fff  }
+}	
