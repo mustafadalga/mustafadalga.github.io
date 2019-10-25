@@ -1,0 +1,52 @@
+		body
+		{
+			background: #f5f5f5;
+		}
+		#tasiyici
+		{
+			width: 100%;
+		}
+		#ust-bolum
+		{
+			width: 80%;
+			height: 200px;
+			border:1px solid #111;
+			margin-left: auto;
+			margin-right: auto;
+			background-color: #ecf0f1;
+		}
+		*
+		{
+			list-style-type: none;
+			text-decoration: none;
+		}
+		#menu-tasiyici
+		{
+
+			width: 80%;
+			position: absolute;
+			margin-top: -75px;
+		}
+		#menu-tasiyici ul
+		{
+			width: 900px;
+			height: 100px;
+			margin-left: calc(50vw - 500px);
+			margin-top:0px;
+			margin-bottom: 0px;
+			padding-top: 0px;
+			padding-bottom: 0px;	
+
+		}
+		ul li
+		{
+			margin:0px;
+			padding:0px;
+			width: 150px;
+			height: 150px;
+			line-height: 150px;
+			text-align: center;	
+			border-radius: 50%;
+			background-color:#95a5a6;
+			float: left;
+		}
