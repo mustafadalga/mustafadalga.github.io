@@ -49,4 +49,15 @@
 			border-radius: 50%;
 			background-color:#95a5a6;
 			float: left;
+	     	transition: 0.5s all ;
+	     	cursor: pointer;
+		}
+		ul li:hover
+		{
+			margin-top: 32px;
+		}
+		ul li a
+		{
+			color:#fff;
+			font-size: 18px;
 		}
