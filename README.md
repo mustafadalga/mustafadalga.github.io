@@ -1,4 +1,4 @@
-### Frond End Development
+### Frond End Developments
 
 
 # https://mustafadalga.github.io
