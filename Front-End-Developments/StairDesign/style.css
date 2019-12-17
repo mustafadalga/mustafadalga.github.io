@@ -1,0 +1,168 @@
+		*
+		{
+		margin:0px;	
+		padding:0px;
+		}
+		body
+		{
+			background:#ecf0f1;
+		}
+		.sol
+		{
+			float: left;
+		}
+		.sag
+		{
+			float: right;
+		}
+		.sol div
+		{
+			height: 100px;
+			width: 100px;
+			position: absolute;
+		}
+		#kutu1-sol
+		{
+			background-color:#f39c12;
+		}		
+		#kutu2-sol
+		{
+			background-color: #95a5a6;
+			left: 50px;
+			top:50px;
+		}
+		#kutu3-sol
+		{
+			background-color: #e67e22;
+			left: 100px;
+			top:100px;
+		}
+		#kutu4-sol
+		{
+			top:150px;
+			left:150px;
+			background-color: #8e44ad;
+		}
+		#kutu5-sol
+		{
+			top:200px;
+			left:200px;
+			background-color: #1abc9c;
+		}
+		#kutu6-sol
+		{
+			top:250px;
+			left:250px;
+			background-color: #f1c40f;
+		}
+		#kutu7-sol
+		{
+			top:300px;
+			left:300px;
+			background-color: #2c3e50;
+		}
+		#kutu8-sol
+		{
+			top:350px;
+			left:350px;
+			background-color: #1abc9c;
+		}
+		#kutu9-sol
+		{
+			top:400px;
+			left:400px;
+			background-color: #e67e22;
+		}	
+		#kutu10-sol
+		{
+			top:450px;
+			left:450px;
+			background-color: #bdc3c7;
+		}		
+		#kutu11-sol
+		{
+			top:500px;
+			left:500px;
+			background-color: #9b59b6;
+		}
+		.sag div
+		{
+			height: 100px;
+			width: 100px;
+			float: right;
+			position: absolute;
+		}
+		#kutu1-sag
+		{
+			background-color:#f39c12;
+			right:0px;
+		}		
+		#kutu2-sag
+		{
+			background-color: #95a5a6;
+			right: 50px;
+			top:50px;
+		}
+		#kutu3-sag
+		{
+			background-color: #e67e22;
+			right: 100px;
+			top:100px;
+		}
+		#kutu4-sag
+		{
+			top:150px;
+			right:150px;
+			background-color: #8e44ad;
+		}
+		#kutu5-sag
+		{
+			top:200px;
+			right:200px;
+			background-color: #1abc9c;
+		}
+		#kutu6-sag
+		{
+			top:250px;
+			right:250px;
+			background-color: #f1c40f;
+		}
+		#kutu7-sag
+		{
+			top:300px;
+			right:300px;
+			background-color: #2c3e50;
+		}
+		#kutu8-sag
+		{
+			top:350px;
+			right:350px;
+			background-color: #1abc9c;
+		}
+		#kutu9-sag
+		{
+			top:400px;
+			right:400px;
+			background-color: #e67e22;
+		}	
+		#kutu10-sag
+		{
+			top:450px;
+			right:450px;
+			background-color: #bdc3c7;
+		}		
+		#kutu11-sag
+		{
+			top:500px;
+			right:500px;
+			background-color: #9b59b6;
+		}
+		#orta-bolum	
+		{
+			height: 100px;
+			width: 200px;
+			position: absolute;
+			top:500px;
+			left: 600px;
+			background-color:#27ae60;
+		}				

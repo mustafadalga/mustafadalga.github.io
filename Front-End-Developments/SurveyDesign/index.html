@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>Anket Uygulaması</title>
+	<link href="assets/css/stil.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+	<div id="genel">
+		<div id="header">
+			<img src="assets/img/logo.jpg" alt="" />
+			<h2>Anket Uygulaması</h2>
+			<p>Değerli misafirler size daha iyi hizmet vermek için düzenlediğimiz formu doldurarak
+			sitemiz ile ilgili düşüncelerinizi bizimle paylaşmanızı rica ederiz.</p>
+		</div>
+		
+		<form action="#" method="POST">
+			<div id="soru">
+				<div class="sol">Site tasarımını nasıl buldunuz ?</div>
+				<div class="sag">
+					<input type="radio" name="soru1" value="1"/>Çok İyi
+					<input type="radio" name="soru1" value="2"/>İyi
+					<input type="radio" name="soru1" value="3"/>Orta
+					<input type="radio" name="soru1" value="4"/>Kötü
+				</div>
+			</div>	
+
+			<div id="soru">
+				<div class="sol">Sitemizdeki dersleri kalitesi hakkında ne düşünüyorsunuz?</div>
+				<div class="sag">
+					<input type="radio" name="soru2" value="1"/>Çok İyi
+					<input type="radio" name="soru2" value="2"/>İyi
+					<input type="radio" name="soru2" value="3"/>Orta
+					<input type="radio" name="soru2" value="4"/>Kötü
+				</div>
+			</div>
+
+			<div id="soru">
+				<div class="sol">Derslerdeki anlatım tarzını nasıl buldunuz?</div>
+				<div class="sag">
+					<input type="radio" name="soru3" value="1"/>Çok İyi
+					<input type="radio" name="soru3" value="2"/>İyi
+					<input type="radio" name="soru3" value="3"/>Orta
+					<input type="radio" name="soru3" value="4"/>Kötü
+				</div>
+			</div>
+
+			<div id="soru">
+				<div class="sol">Sitemize Forum açılsın mı?</div>
+				<div class="sag">
+					<input type="radio" name="soru4" value="1"/>Evet
+					<input type="radio" name="soru4" value="2"/>Hayır
+				</div>
+			</div>
+
+			<div id="soru">
+				<div class="sol">Sitemizde Üyelik Sistemi aktif edilsin mi?</div>
+				<div class="sag">
+					<input type="radio" name="soru5" value="1"/>Evet
+					<input type="radio" name="soru5" value="2"/>Hayır
+				</div>
+			</div>	
+
+			<div id="soru">
+				<div class="sol">Genel olarak sitemiz hakkında ne düşünüyorsunuz ?</div>
+				<span><textarea name="hakkında" class="text"></textarea></span>
+			</div>
+
+			<div id="soru">
+				<div class="sol">Bize nasıl ulaştınız</div>
+				<div class="sag">
+					<input type="radio" name="soru6" value="1"/>Tesadüfen
+					<input type="radio" name="soru6" value="2"/>Youtube'den
+					<input type="radio" name="soru6" value="3"/>Tavsiye ile
+				</div>
+			</div>	
+
+			<div id="soru">
+				<div class="sol">Başkalarına bizi tavsiye eder misiniz ?</div>
+				<div class="sag">
+					<input type="radio" name="soru7" value="1"/>Ederim
+					<input type="radio" name="soru7" value="2"/>Etmem
+					<input type="radio" name="soru7" value="3"/>Fikrim yok
+				</div>
+			</div>	
+
+			<div id="sonsoru">
+				<div class="sol">Kişisel Bilgileriniz</div>
+			</div>	
+
+
+			<div id="soru">
+				<div class="sol">Adınız ve Soyadınız</div>
+				<div class="sag">
+					<input type="text" name="adı" size="50" class="input" required/>
+				</div>
+			</div>
+
+			<div id="soru">
+				<div class="sol">Mail Adresiniz</div>
+				<div class="sag">
+					<input type="email" name="mail" size="50" class="input" required/>
+				</div>
+			</div>
+
+			<input type="submit" value="Gönder" class="gonder"/>	
+
+		</div>
+	</form>
+</div>
+
+<div id="footer">
+	<div class="footer">
+		Bu anket uygulaması <a href="https://github.com/mustafadalga" title="Mustafa Dalğa">Mustafa Dalğa</a>
+		tarafından tasarlanmıştır.<br>
+		Her Hakkı Saklıdır 2014-2015
+	</div>
+</div>
+</body>
+</html>

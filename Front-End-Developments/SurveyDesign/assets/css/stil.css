@@ -1,0 +1,85 @@
+body {background:#333;}
+h2,p,form,textarea{padding:0; margin:0; border:none; }
+#genel
+	{
+	width:870px; 
+	margin:10px auto;
+	overflow:auto;
+	border:solid 2px blue;
+	background:white;
+	border-radius:10px;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	height:auto;
+	}
+#header
+	{
+	margin:10px;
+	color:yellow;
+	height:200px; 
+	position:relative;
+	}
+#header img {
+			border-radius:10px;
+		-webkit-border-radius:10px;
+		-moz-border-radius:10px;
+			}
+h2 {position:absolute; left:120px; top:10px; width:600px; text-align:center; text-indent:25px;}
+p {position:absolute; left:120px; bottom:20px; width:600px; text-align:center; text-indent:25px;}
+#soru
+	{
+		border-radius:5px;
+		-webkit-border-radius:5px;
+		-moz-border-radius:5px;
+		border:1px solid orange;
+		background:#9C9;
+		color:#333;
+		width:840px; 
+		margin:auto; margin-bottom:3px;
+		float:left;
+		margin-left:10px;
+		padding:5px;
+	}
+#soru:hover{background:#ddd;}
+.sol {font:bold 13px tahoma;  float:left;}
+.sag {margin-right:30px; float:right; font-weight:bold;}
+.text {border:1 solid red; height:70px; width:800px; padding:5px; resize:none;}
+:focus {outline:0;}
+
+#sonsoru
+	{
+		border-radius:5px;
+		-webkit-border-radius:5px;
+		-moz-border-radius:5px;
+		border:1px solid orange;
+		background:#333;
+		color:#fff;
+		width:840px; 
+		margin:auto; margin-bottom:3px;
+		float:left;
+		margin-left:10px;
+		padding:5px;
+	}
+.input {
+border:1px solid orange; 
+}
+.input:valid {background:yellow;}
+.gonder
+{
+background:black;
+border:1px solid red;
+font:bold 16px arial ;
+color:#fff;
+margin-top:10px;
+padding:15px 30px;
+width:100%;
+}
+#footer
+{
+background:#111; height:90px; margin-top:20px;
+}
+.footer
+{
+width:870px; margin:0px auto; color:#fff; padding:30px 0px; text-align:center;
+}
+a {color:yellow; text-decoration:none;}
