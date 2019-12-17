@@ -1,0 +1,36 @@
+	div
+	{
+		
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+	}
+	@keyframes hareket 
+	{
+		100% {
+			margin-left: 89.5% ;
+			background: #e74c3c;
+		}
+	}
+	.kutu1
+	{
+		background: #03b6fc;
+		animation: hareket 10s infinite alternate;
+		margin:60px 0px;
+	}
+	.kutu1:hover
+	{
+		animation-play-state: paused;
+	}
+	.kutu2
+	{
+		background: lime;
+		animation: hareket 10s infinite alternate;
+		animation-delay: 0.5s;
+
+	}
+	.kutu2:hover
+	{
+		animation-play-state: paused;
+	}
+}

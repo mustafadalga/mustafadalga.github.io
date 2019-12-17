@@ -1,7 +1,5 @@
-#main-header img {
-  width: 100%;
-  height: 100%;
-}
+
+
 .bg-black {
   color: white;
   background: #000;
@@ -13,8 +11,44 @@
   opacity: 0.8;
   cursor: pointer;
 }
-@media (min-width: 1199px) {
+@media(min-width: 1199px) {
   .port-item {
     padding: 3em !important;
   }
+
+}
+
+ #main-header img {
+     max-height: 345px;
+ }
+
+
+ @media(min-width: 768px) and (max-width: 991px){
+
+   #main-header img {
+     max-height: 414px;
+ }
+}
+
+ @media(min-width: 992px) and (max-width: 1199px){
+
+   #main-header img {
+        max-height: 345px;
+ }
+}
+ @media(min-width: 1200px) {
+
+   #main-header img {
+        max-height: 395px;
+ }
+}
+
+.works-hover:hover{
+  opacity: 0.9;
+  cursor: pointer;
+}
+.zoom-hover i:hover{
+    -webkit-transition: all 0.5s; 
+  transition: all 0.5s;
+   transform: scale(2);
 }
