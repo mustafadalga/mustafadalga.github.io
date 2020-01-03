@@ -233,40 +233,47 @@ $(document).ready(function () {
 
   $(".tas-kaldir").click(function () {
 
+    var kaldirilacakTasSayisi = $(".kaldirilacak-tas").length;
+
+    if (kaldirilacakTasSayisi > 0) {
 
 
-    $(".kaldirilacak-tas").addClass("kaldirilan-tas");
-    $(".kaldirilan-tas").removeClass("kaldirilacak-tas");
+      $(".kaldirilacak-tas").addClass("kaldirilan-tas");
+      $(".kaldirilan-tas").removeClass("kaldirilacak-tas");
 
-    if (oyunTamamlandimi()) {
+      if (oyunTamamlandimi()) {
 
-      oyunSonucAnimasyonGoster(aktifOyuncu);
-      $(this).attr('disabled', true);
+        oyunSonucAnimasyonGoster(aktifOyuncu);
+        $(this).attr('disabled', true);
 
+      } else {
+
+
+        if (aktifOyuncu == 1) {
+          $(".oyuncu-1-gosterge").addClass("oyuncu-1-gosterge-hamle");
+          setTimeout(function () { $(".oyuncu-1-gosterge").removeClass("oyuncu-1-gosterge-hamle"); }, 1000);
+          $(".bg-sol .aktif-oyuncu").css('animation-name', 'oyuncu1-right-to-left');
+          if ($(".bg-sag .aktif-oyuncu").hasClass("d-none")) {
+            $(".bg-sag .aktif-oyuncu").removeClass("d-none");
+          }
+          $(".bg-sag .aktif-oyuncu").css('animation-name', 'oyuncu2-right-to-left');
+
+          aktifOyuncu = 2;
+        } else {
+          $(".oyuncu-2-gosterge").addClass("oyuncu-2-gosterge-hamle");
+          setTimeout(function () { $(".oyuncu-2-gosterge").removeClass("oyuncu-2-gosterge-hamle"); }, 1000);
+          $(".bg-sag .aktif-oyuncu").css('animation-name', 'oyuncu2-left-to-right');
+          if ($(".bg-sol .aktif-oyuncu").hasClass("d-none")) {
+            $(".bg-sol .aktif-oyuncu").removeClass("d-none");
+          }
+          $(".bg-sol .aktif-oyuncu").css('animation-name', 'oyuncu1-left-to-right');
+          aktifOyuncu = 1;
+        }
+        taslar = [];
+      }
     } else {
 
-
-      if (aktifOyuncu == 1) {
-        $(".oyuncu-1-gosterge").addClass("oyuncu-1-gosterge-hamle");
-        setTimeout(function () { $(".oyuncu-1-gosterge").removeClass("oyuncu-1-gosterge-hamle"); }, 1000);
-        $(".bg-sol .aktif-oyuncu").css('animation-name', 'oyuncu1-right-to-left');
-        if ($(".bg-sag .aktif-oyuncu").hasClass("d-none")) {
-          $(".bg-sag .aktif-oyuncu").removeClass("d-none");
-        }
-        $(".bg-sag .aktif-oyuncu").css('animation-name', 'oyuncu2-right-to-left');
-
-        aktifOyuncu = 2;
-      } else {
-        $(".oyuncu-2-gosterge").addClass("oyuncu-2-gosterge-hamle");
-        setTimeout(function () { $(".oyuncu-2-gosterge").removeClass("oyuncu-2-gosterge-hamle"); }, 1000);
-        $(".bg-sag .aktif-oyuncu").css('animation-name', 'oyuncu2-left-to-right');
-        if ($(".bg-sol .aktif-oyuncu").hasClass("d-none")) {
-          $(".bg-sol .aktif-oyuncu").removeClass("d-none");
-        }
-        $(".bg-sol .aktif-oyuncu").css('animation-name', 'oyuncu1-left-to-right');
-        aktifOyuncu = 1;
-      }
-      taslar = [];
+      alert("Kaldırılacak taşları seçmediniz");
     }
   });
 
