@@ -26,7 +26,8 @@ function tasKaldir(tas, satir, sutun) {
     "satir": satir,
     'sutun': sutun
   });
-  tas.addClass("bg-transparent");
+  tas.addClass("tas-bg-transparent");
+  tas.children().addClass("tas-opacity");
   tas.parent().addClass("kaldirilacak-tas");
 
 }
@@ -35,7 +36,10 @@ function tasYerineKoy(tas, satir, sutun) {
 
   var index = taslar.findIndex(taslar => taslar.satir === satir && taslar.sutun === sutun);
   taslar.splice(index, 1);
-  tas.removeClass("bg-transparent");
+  tas.removeClass("tas-bg-transparent");
+  tas.children().removeClass("tas-opacity");
+
+
   tas.parent().removeClass("kaldirilacak-tas");
 
 }
@@ -52,7 +56,7 @@ function tasOynat(tas) {
   satir = tasSatirSutunGetir(tas)[0];
   sutun = tasSatirSutunGetir(tas)[1];
 
-  if (tas.hasClass("bg-transparent")) {
+  if (tas.hasClass("tas-bg-transparent")) {
     tasYerineKoy(tas, satir, sutun);
   } else {
     tasKaldir(tas, satir, sutun);
@@ -62,7 +66,8 @@ function tasOynat(tas) {
 
 function taslariSifirla(satir, sutun) {
 
-  $('[data-satir=' + satir + '][data-sutun=' + sutun + ']').removeClass("bg-transparent");
+  $('[data-satir=' + satir + '][data-sutun=' + sutun + ']').removeClass("tas-bg-transparent");
+  $('[data-satir=' + satir + '][data-sutun=' + sutun + ']').children().removeClass("tas-opacity");
   $('[data-satir=' + satir + '][data-sutun=' + sutun + ']').parent().removeClass("kaldirilacak-tas");
 }
 
@@ -94,8 +99,18 @@ function kimKazandi(aktifOyuncu) {
 function oyunSonucAnimasyonGoster(aktifOyuncu) {
 
   if (kimKazandi(aktifOyuncu) == 1) {
+
+    $.notify(
+      "Oyunu kazanan oyuncu:" + oyuncu1, { className: "success", position: "top center" },
+    );
+
     $(".bg-sol").addClass("sol-infinite-animation");
   } else {
+
+    $.notify(
+      "Oyunu kazanan oyuncu:" + oyuncu2, { className: "success", position: "top center" },
+    );
+
     $(".bg-sag").addClass("sag-infinite-animation");
   }
 }
@@ -119,7 +134,8 @@ function oyunVerileriniSifirla() {
 
 
   $(".sutun").removeClass("kaldirilan-tas");
-  $(".tas").removeClass("bg-transparent");
+  $(".tas").removeClass("tas-bg-transparent");
+  $(".tas").children().removeClass("tas-opacity");
   $(".tas-kaldir").attr("disabled", false);
   $(".btn-btn-kura-cek button").attr("disabled", false);
   $(".modal-kura-cekimi .modal-footer").html('');
@@ -135,9 +151,7 @@ function oyunVerileriniSifirla() {
 
 }
 
-var taslar = [];
-var zincirBaglimi = true;
-var zincirCaprazmi = false;
+
 function checksatirsutun(satir, sutun) {
 
   if (!((taslar[0].satir == satir || taslar[0].sutun == sutun) && (taslar[1].satir == satir || taslar[1].sutun == sutun))) {
@@ -164,17 +178,19 @@ function kuraCek() {
 }
 
 
-
+var taslar = [];
+var zincirBaglimi = true;
+var zincirCaprazmi = false;
+var oyuncu1 = "";
+var oyuncu2 = ""
+var kuraSonuc = 0;
+var aktifOyuncu = 0;
 $(document).ready(function () {
 
-
-  $(".modal-oyuncu-girisi").slideDown();
-
-  var kuraSonuc = 0;
-  var aktifOyuncu = 0;
   $(document).on("click", ".btn-oyunu-baslat", function () {
 
     $(".modal-kura-cekimi").slideUp();
+    $.notify("Yeni oyun başladı", "success");
 
     if (kuraSonuc == 1) {
       $(".bg-sol .aktif-oyuncu").removeClass("d-none");
@@ -205,8 +221,8 @@ $(document).ready(function () {
 
   $(".btn-oyun-baslat").click(function () {
 
-    var oyuncu1 = $('input[name="oyuncu_1"]').val();
-    var oyuncu2 = $('input[name="oyuncu_2"]').val();
+    oyuncu1 = $('input[name="oyuncu_1"]').val();
+    oyuncu2 = $('input[name="oyuncu_2"]').val();
 
     if (!isEmpty(oyuncu1, oyuncu2)) {
 
@@ -273,15 +289,22 @@ $(document).ready(function () {
       }
     } else {
 
-      alert("Kaldırılacak taşları seçmediniz");
+      $.notify("Oynamak için taş seçmediniz !", "warn");
     }
   });
 
-  $(".yeni-oyun").click(function () {
+  $(document).on("click", ".modal-yeni-oyun .close", function () {
+    $(".modal-yeni-oyun").slideUp();
+
+  });
+
+  $(document).on("click", ".yeni-oyun", function () {
 
     oyunVerileriniSifirla();
+    $(".modal-kura-cekimi").addClass("modal-yeni-oyun");
     $(".modal-kura-cekimi").slideDown();
   });
+
 
   $(".tas").click(function () {
 
