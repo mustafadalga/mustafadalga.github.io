@@ -1,4 +1,125 @@
-function zincirBaglimiKontrolu(satir, sutun) {
+var taslar = [];
+var zincirBaglimi = true;
+var zincirCaprazmi = false;
+var oyuncu1 = "";
+var oyuncu2 = ""
+var kuraSonuc = 0;
+var aktifOyuncu = 0;
+$(document).ready(function () {
+
+  $(document).on("click", ".btn-oyunu-baslat", function () {
+
+    $(".modal-kura-cekimi").slideUp();
+    $.notify("Yeni oyun başladı", "success");
+
+    if (kuraSonuc == 1) {
+      $(".bg-sol .aktif-oyuncu").removeClass("d-none");
+      aktifOyuncu = 1;
+    } else {
+      $(".bg-sag .aktif-oyuncu").removeClass("d-none");
+      aktifOyuncu = 2;
+    }
+    $(".btn-kura-cek button").attr("disabled", false);
+  });
+
+
+  $(document).on("click", ".btn-kura-cek button", function () {
+
+    $(this).attr('disabled', true);
+    var adSoyad = "";
+    kuraSonuc = kuraCek();
+
+    if (kuraSonuc == 1) {
+      adSoyad = $(".profil-1 > h3").text();
+
+    } else {
+      adSoyad = $(".profil-2 > h3").text();
+    }
+    $(".modal-kura-cekimi  .modal-footer").append("<div class='modal-alert alert-success'>Oyuna başlayacak oyuncu:" + adSoyad + "</div >");
+    $(".modal-kura-cekimi  .modal-footer").append("<button type='button' class='btn btn-primary btn-oyunu-baslat'>Oyunu Başlat</button>");
+
+  });
+
+
+  $(".btn-oyun-baslat").click(function () {
+
+    oyuncu1 = $('input[name="oyuncu_1"]').val().toUpperCase();
+    oyuncu2 = $('input[name="oyuncu_2"]').val().toUpperCase();
+
+    if (!isEmpty(oyuncu1, oyuncu2)) {
+
+      $(".oyuncu-1-gosterge .oyuncu-ad").html(oyuncuAdBoslukBirak(oyuncu1));
+      $(".oyuncu-2-gosterge .oyuncu-ad").html(oyuncuAdBoslukBirak(oyuncu2));
+      $(".profil-1 > h3").text(oyuncu1);
+      $(".profil-2 > h3").text(oyuncu2);
+      $(".modal-oyuncu-girisi").slideUp();
+      $(".modal-kura-cekimi").slideDown();
+
+
+    } else {
+
+      $(".modal-oyuncu-girisi  .modal-warning").html("<div class='modal-alert alert-danger'>Lütfen boş alanları doldurunuz</div >");
+      setTimeout(function () {
+        $(".alert-danger").slideUp();
+      }, 3000);
+
+    }
+
+  });
+
+
+  $(".tas-kaldir").click(function () {
+
+    var kaldirilacakTasSayisi = $(".kaldirilacak-tas").length;
+    if (kaldirilacakTasSayisi > 0) {
+      hamleYapilsinmi();
+    } else {
+      $.notify("Oynamak için taş seçmediniz !", "warn");
+    }
+  });
+
+  $(document).on("click", ".modal-yeni-oyun .close", function () {
+    $(".modal-yeni-oyun").slideUp();
+
+  });
+
+  $(document).on("click", ".yeni-oyun", function () {
+
+    oyunVerileriniSifirla();
+    $(".modal-kura-cekimi").addClass("modal-yeni-oyun");
+    $(".modal-kura-cekimi").slideDown();
+  });
+
+
+  $(".tas").click(function () {
+
+    var tas = $(this);
+    satir = tasSatirSutunGetir(tas)[0];
+    sutun = tasSatirSutunGetir(tas)[1];
+    tasOynat(tas)
+
+
+    if (taslar.length > 1) {
+      zincirBaglimi = zincirBaglimiKontrol(satir, sutun);
+    }
+
+    if (taslar.length == 2) {
+      zincirCaprazmi = zincirCaprazmiKontrol(satir, sutun);
+    }
+
+    if (zincirBaglimi && !zincirCaprazmi) {
+
+      if (taslar.length > 2) {
+        checksatirsutun(satir, sutun);
+      }
+    } else {
+      taslariGonder();
+    }
+  });
+
+});
+
+function zincirBaglimiKontrol(satir, sutun) {
 
   satirResult = Math.abs(taslar[taslar.length - 2].satir - satir);
   sutunResult = Math.abs(taslar[taslar.length - 2].sutun - sutun);
@@ -29,7 +150,10 @@ function tasKaldir(tas, satir, sutun) {
   tas.addClass("tas-bg-transparent");
   tas.children().addClass("tas-opacity");
   tas.parent().addClass("kaldirilacak-tas");
+}
 
+function oyuncuAdBoslukBirak(isim) {
+  return isim.split(" ").join("<p></p>");
 }
 
 function tasYerineKoy(tas, satir, sutun) {
@@ -44,6 +168,68 @@ function tasYerineKoy(tas, satir, sutun) {
 
 }
 
+
+function hamleYapilsinmi() {
+
+  $.confirm({
+    title: 'Karar',
+    content: 'Hamle yapmak istediğinizden emin misiniz ?',
+    type: 'dark',
+    useBootstrap: false,
+    boxWidth: '40%',
+    typeAnimated: true,
+    buttons: {
+      yes: {
+        action: function () {
+          hamleYap();
+        }
+      },
+      no: {
+        action: function () {
+        }
+      },
+    }
+  });
+}
+
+
+function hamleYap() {
+
+  $(".kaldirilacak-tas").addClass("kaldirilan-tas");
+  $(".kaldirilan-tas").removeClass("kaldirilacak-tas");
+
+  if (oyunTamamlandimi()) {
+
+    oyunSonucAnimasyonGoster(aktifOyuncu);
+    $(this).attr('disabled', true);
+
+  } else {
+
+
+    if (aktifOyuncu == 1) {
+      $(".oyuncu-1-gosterge").addClass("oyuncu-1-gosterge-hamle");
+      setTimeout(function () { $(".oyuncu-1-gosterge").removeClass("oyuncu-1-gosterge-hamle"); }, 1000);
+      $(".bg-sol .aktif-oyuncu").css('animation-name', 'oyuncu1-right-to-left');
+      if ($(".bg-sag .aktif-oyuncu").hasClass("d-none")) {
+        $(".bg-sag .aktif-oyuncu").removeClass("d-none");
+      }
+      $(".bg-sag .aktif-oyuncu").css('animation-name', 'oyuncu2-right-to-left');
+
+      aktifOyuncu = 2;
+    } else {
+      $(".oyuncu-2-gosterge").addClass("oyuncu-2-gosterge-hamle");
+      setTimeout(function () { $(".oyuncu-2-gosterge").removeClass("oyuncu-2-gosterge-hamle"); }, 1000);
+      $(".bg-sag .aktif-oyuncu").css('animation-name', 'oyuncu2-left-to-right');
+      if ($(".bg-sol .aktif-oyuncu").hasClass("d-none")) {
+        $(".bg-sol .aktif-oyuncu").removeClass("d-none");
+      }
+      $(".bg-sol .aktif-oyuncu").css('animation-name', 'oyuncu1-left-to-right');
+      aktifOyuncu = 1;
+    }
+    taslar = [];
+  }
+
+}
 
 function tasSatirSutunGetir(tas) {
 
@@ -132,7 +318,6 @@ function degiskenVerileriniSifirla() {
 
 function oyunVerileriniSifirla() {
 
-
   $(".sutun").removeClass("kaldirilan-tas");
   $(".tas").removeClass("tas-bg-transparent");
   $(".tas").children().removeClass("tas-opacity");
@@ -160,6 +345,7 @@ function checksatirsutun(satir, sutun) {
 
   }
   else {
+    //
   }
 }
 
@@ -176,160 +362,3 @@ function isEmpty(input1, input2) {
 function kuraCek() {
   return Math.floor(Math.random() * 2) + 1;
 }
-
-
-var taslar = [];
-var zincirBaglimi = true;
-var zincirCaprazmi = false;
-var oyuncu1 = "";
-var oyuncu2 = ""
-var kuraSonuc = 0;
-var aktifOyuncu = 0;
-$(document).ready(function () {
-
-  $(document).on("click", ".btn-oyunu-baslat", function () {
-
-    $(".modal-kura-cekimi").slideUp();
-    $.notify("Yeni oyun başladı", "success");
-
-    if (kuraSonuc == 1) {
-      $(".bg-sol .aktif-oyuncu").removeClass("d-none");
-    } else {
-      $(".bg-sag .aktif-oyuncu").removeClass("d-none");
-    }
-    $(".btn-kura-cek button").attr("disabled", false);
-  });
-
-
-  $(document).on("click", ".btn-kura-cek button", function () {
-
-    $(this).attr('disabled', true);
-    var adSoyad = "";
-    kuraSonuc = kuraCek();
-
-    if (kuraSonuc == 1) {
-      adSoyad = $(".profil-1 > h3").text();
-
-    } else {
-      adSoyad = $(".profil-2 > h3").text();
-    }
-    $(".modal-kura-cekimi  .modal-footer").append("<div class='modal-alert alert-success'>Oyuna başlayacak oyuncu:" + adSoyad + "</div >");
-    $(".modal-kura-cekimi  .modal-footer").append("<button type='button' class='btn btn-primary btn-oyunu-baslat'>Oyunu Başlat</button>");
-
-  });
-
-
-  $(".btn-oyun-baslat").click(function () {
-
-    oyuncu1 = $('input[name="oyuncu_1"]').val();
-    oyuncu2 = $('input[name="oyuncu_2"]').val();
-
-    if (!isEmpty(oyuncu1, oyuncu2)) {
-
-      $(".oyuncu-1-gosterge .oyuncu-ad").text(oyuncu1.toUpperCase());
-      $(".oyuncu-2-gosterge .oyuncu-ad").text(oyuncu2.toUpperCase());
-      $(".profil-1 > h3").text(oyuncu1.toUpperCase());
-      $(".profil-2 > h3").text(oyuncu2.toUpperCase());
-      $(".modal-oyuncu-girisi").slideUp();
-      $(".modal-kura-cekimi").slideDown();
-
-
-    } else {
-
-
-      $(".modal-oyuncu-girisi  .modal-warning").html("<div class='modal-alert alert-danger'>Lütfen boş alanları doldurunuz</div >");
-      setTimeout(function () {
-        $(".alert-danger").slideUp();
-      }, 3000);
-
-    }
-
-  });
-
-
-  $(".tas-kaldir").click(function () {
-
-    var kaldirilacakTasSayisi = $(".kaldirilacak-tas").length;
-
-    if (kaldirilacakTasSayisi > 0) {
-
-
-      $(".kaldirilacak-tas").addClass("kaldirilan-tas");
-      $(".kaldirilan-tas").removeClass("kaldirilacak-tas");
-
-      if (oyunTamamlandimi()) {
-
-        oyunSonucAnimasyonGoster(aktifOyuncu);
-        $(this).attr('disabled', true);
-
-      } else {
-
-
-        if (aktifOyuncu == 1) {
-          $(".oyuncu-1-gosterge").addClass("oyuncu-1-gosterge-hamle");
-          setTimeout(function () { $(".oyuncu-1-gosterge").removeClass("oyuncu-1-gosterge-hamle"); }, 1000);
-          $(".bg-sol .aktif-oyuncu").css('animation-name', 'oyuncu1-right-to-left');
-          if ($(".bg-sag .aktif-oyuncu").hasClass("d-none")) {
-            $(".bg-sag .aktif-oyuncu").removeClass("d-none");
-          }
-          $(".bg-sag .aktif-oyuncu").css('animation-name', 'oyuncu2-right-to-left');
-
-          aktifOyuncu = 2;
-        } else {
-          $(".oyuncu-2-gosterge").addClass("oyuncu-2-gosterge-hamle");
-          setTimeout(function () { $(".oyuncu-2-gosterge").removeClass("oyuncu-2-gosterge-hamle"); }, 1000);
-          $(".bg-sag .aktif-oyuncu").css('animation-name', 'oyuncu2-left-to-right');
-          if ($(".bg-sol .aktif-oyuncu").hasClass("d-none")) {
-            $(".bg-sol .aktif-oyuncu").removeClass("d-none");
-          }
-          $(".bg-sol .aktif-oyuncu").css('animation-name', 'oyuncu1-left-to-right');
-          aktifOyuncu = 1;
-        }
-        taslar = [];
-      }
-    } else {
-
-      $.notify("Oynamak için taş seçmediniz !", "warn");
-    }
-  });
-
-  $(document).on("click", ".modal-yeni-oyun .close", function () {
-    $(".modal-yeni-oyun").slideUp();
-
-  });
-
-  $(document).on("click", ".yeni-oyun", function () {
-
-    oyunVerileriniSifirla();
-    $(".modal-kura-cekimi").addClass("modal-yeni-oyun");
-    $(".modal-kura-cekimi").slideDown();
-  });
-
-
-  $(".tas").click(function () {
-
-    var tas = $(this);
-    satir = tasSatirSutunGetir(tas)[0];
-    sutun = tasSatirSutunGetir(tas)[1];
-    tasOynat(tas)
-
-
-    if (taslar.length > 1) {
-      zincirBaglimi = zincirBaglimiKontrolu(satir, sutun);
-    }
-
-    if (taslar.length == 2) {
-      zincirCaprazmi = zincirCaprazmiKontrol(satir, sutun);
-    }
-
-    if (zincirBaglimi && !zincirCaprazmi) {
-
-      if (taslar.length > 2) {
-        checksatirsutun(satir, sutun);
-      }
-    } else {
-      taslariGonder();
-    }
-  });
-
-});
