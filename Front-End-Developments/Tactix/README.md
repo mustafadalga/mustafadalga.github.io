@@ -8,14 +8,18 @@
 ### Tactix Zeka Oyunu
 
 * Bir strateji oyunudur. 
-*2 kişi ile oynanır.
+* 2 kişi ile oynanır.
 * Oyun kuralları basittir.
 * Oyunun amacı son pulu rakibin almasını sağlamaktır. 
 * Oyun alanı 4×4 =16 kareden oluşmaktadır. 
 * 16 adet pul ile oynanmaktadır.
 * Yaş Grubu:6 Yaş ve Üzeri
-* Beceri Kazanımları:Dikkat Geliştirme, Soyut Düşünme, Strateji Geliştirme
 
+
+### Beceri Kazanımları
+* Dikkat Geliştirme
+* Soyut Düşünme
+* Strateji Geliştirme
 
 ### Tactix Oyun Kuralları
 
@@ -51,6 +55,7 @@
 
 ### Notlar
  * Web uygulama responsive değildir.
+ * Oyun geliştirilmeye devam etmektedir.
  
  
 <hr>
