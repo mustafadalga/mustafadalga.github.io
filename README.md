@@ -1,4 +1,4 @@
-# Mustafa Dalga Portfolio and Front End Developments
+# Portfolio and Front End Developments
 
 
 
