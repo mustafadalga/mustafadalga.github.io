@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Key Detection</title>
+    <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let pressed = [];
+    const secretCode = 'mustafa';
+    window.addEventListener('keyup', (e) => {
+        console.log(-secretCode.length - 1, pressed.length - secretCode.length)
+        pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length)
+        if (pressed.join('').includes(secretCode)) {
+            console.log("Find")
+            cornify_add()
+        }
+    })
+</script>
