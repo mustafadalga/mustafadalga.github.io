@@ -10,14 +10,14 @@
 
     <script>
         // start with strings, numbers and booleans
-        // let age = 100;
-        // let age2 = age;
+        let age = 100;
+        let age2 = age;
         console.log(age, age2)
             // age = 200
         console.log(age, age2)
 
-        // let name = 'M'
-        // let name2 = name;
+        let name = 'M'
+        let name2 = name;
         console.log(name, name2)
             // name = 'D'
         console.log(name, name2)
@@ -69,8 +69,8 @@
         };
 
         // and think we make a copy:
-        // const captain = person;
-        // captain.number = 9;
+        const captain = person;
+        captain.number = 9;
         console.log(person, captain)
             // how do we take a copy instead?
         const cap2 = Object.assign({}, person, {
