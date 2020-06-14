@@ -144,26 +144,10 @@ var GameState = {
         this.rightArrow.fixedToCamera = true;
         this.actionButton.fixedToCamera = true;
 
-
-        //Left Arrow
-        this.game.events.onInputDown.add(() => {
-            this.player.customParams.isMovingLeft = true;
-        }, this);
-        this.leftArrow.events.onInputUp.add(() => {
-            this.player.customParams.isMovingLeft = false;
-        }, this);
-
-
-        //Right Arrow
-        this.game.events.onInputDown.add(() => {
-            this.player.customParams.isMovingRight = true;
-        }, this);
-
-        this.game.events.onInputUp.add(() => {
-            this.player.customParams.isMovingRight = false;
-        }, this);
-
-
+        game.input.addPointer();
+        game.input.addPointer();
+        game.input.addPointer();
+        game.input.addPointer();
 
         //Action Button
         this.actionButton.events.onInputDown.add(() => {
