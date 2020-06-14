@@ -57,6 +57,8 @@ var GameState = {
 
         this.player.body.collideWorldBounds = true; //Ekran dısına taşmayı engelle  
 
+        //touch events
+
 
 
         //Kamera takip etme.
@@ -141,6 +143,26 @@ var GameState = {
         this.leftArrow.fixedToCamera = true;
         this.rightArrow.fixedToCamera = true;
         this.actionButton.fixedToCamera = true;
+
+
+        //Left Arrow
+        this.game.events.onInputDown.add(() => {
+            this.player.customParams.isMovingLeft = true;
+        }, this);
+        this.leftArrow.events.onInputUp.add(() => {
+            this.player.customParams.isMovingLeft = false;
+        }, this);
+
+
+        //Right Arrow
+        this.game.events.onInputDown.add(() => {
+            this.player.customParams.isMovingRight = true;
+        }, this);
+
+        this.game.events.onInputUp.add(() => {
+            this.player.customParams.isMovingRight = false;
+        }, this);
+
 
 
         //Action Button
