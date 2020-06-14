@@ -144,9 +144,21 @@ var GameState = {
         this.rightArrow.fixedToCamera = true;
         this.actionButton.fixedToCamera = true;
 
-        this.game.input.onDown.add(function() {
-            alert("input captured 1");
-        });
+        game.input.addPointer();
+        game.input.addPointer();
+        game.input.addPointer();
+        game.input.addPointer();
+
+        var swipeCoordX, swipeCoordY, swipeCoordX2, swipeCoordY2, swipeMinDistance = 100;
+        game.input.onDown.add(function(pointer) {
+            this.player.customParams.mustJump = false;
+        }, this);
+        game.input.onUp.add(function(pointer) {
+            this.player.customParams.mustJump = true;
+            if (swipeCoordX2 < swipeCoordX - swipeMinDistance) {
+                alert("left");
+            } else if (swipeCoordX2 > swipeCoordX + swipeMinDistance) { alert("right"); } else if (swipeCoordY2 < swipeCoordY - swipeMinDistance) { this.player.customParams.mustJump = true; } else if (swipeCoordY2 > swipeCoordY + swipeMinDistance) { alert("down"); }
+        }, this);
 
         /*
                 //Action Button
