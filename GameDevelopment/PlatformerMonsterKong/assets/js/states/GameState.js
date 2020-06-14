@@ -144,14 +144,25 @@ var GameState = {
         this.rightArrow.fixedToCamera = true;
         this.actionButton.fixedToCamera = true;
 
+        /*
         game.input.addPointer();
         game.input.addPointer();
         game.input.addPointer();
         game.input.addPointer();
+*/
 
-
-        var holding_down = game.input.activePointer.isDown;
-        alert(holding_down)
+        var swipeCoordX, swipeCoordY, swipeCoordX2, swipeCoordY2, swipeMinDistance = 100;
+        game.input.onDown.add(function(pointer) {
+            swipeCoordX = pointer.clientX;
+            swipeCoordY = pointer.clientY;
+        }, this);
+        game.input.onUp.add(function(pointer) {
+            swipeCoordX2 = pointer.clientX;
+            swipeCoordY2 = pointer.clientY;
+            if (swipeCoordX2 < swipeCoordX - swipeMinDistance) {
+                alert("left");
+            } else if (swipeCoordX2 > swipeCoordX + swipeMinDistance) { alert("right"); } else if (swipeCoordY2 < swipeCoordY - swipeMinDistance) { alert("up"); } else if (swipeCoordY2 > swipeCoordY + swipeMinDistance) { alert("down"); }
+        }, this);
 
         /*
                 //Action Button
