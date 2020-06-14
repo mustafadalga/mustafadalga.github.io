@@ -144,12 +144,10 @@ var GameState = {
         this.rightArrow.fixedToCamera = true;
         this.actionButton.fixedToCamera = true;
 
-        /*
         game.input.addPointer();
         game.input.addPointer();
         game.input.addPointer();
         game.input.addPointer();
-*/
 
         var swipeCoordX, swipeCoordY, swipeCoordX2, swipeCoordY2, swipeMinDistance = 100;
         game.input.onDown.add(function(pointer) {
