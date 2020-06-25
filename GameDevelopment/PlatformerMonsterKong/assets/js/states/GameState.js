@@ -57,6 +57,8 @@ var GameState = {
 
         this.player.body.collideWorldBounds = true; //Ekran dısına taşmayı engelle  
 
+        //touch events
+
 
 
         //Kamera takip etme.
@@ -142,53 +144,70 @@ var GameState = {
         this.rightArrow.fixedToCamera = true;
         this.actionButton.fixedToCamera = true;
 
+        game.input.addPointer();
+        game.input.addPointer();
+        game.input.addPointer();
+        game.input.addPointer();
 
-        //Action Button
-        this.actionButton.events.onInputDown.add(() => {
-            this.player.customParams.mustJump = true;
-            console.log('1')
-        }, this);
-
-        this.actionButton.events.onInputUp.add(() => {
+        var swipeCoordX, swipeCoordY, swipeCoordX2, swipeCoordY2, swipeMinDistance = 100;
+        game.input.onDown.add(function(pointer) {
             this.player.customParams.mustJump = false;
-            console.log('0')
+        }, this);
+        game.input.onUp.add(function(pointer) {
+            this.player.customParams.mustJump = true;
+            if (swipeCoordX2 < swipeCoordX - swipeMinDistance) {
+                alert("left");
+            } else if (swipeCoordX2 > swipeCoordX + swipeMinDistance) { alert("right"); } else if (swipeCoordY2 < swipeCoordY - swipeMinDistance) { this.player.customParams.mustJump = true; } else if (swipeCoordY2 > swipeCoordY + swipeMinDistance) { alert("down"); }
         }, this);
 
+        /*
+                //Action Button
+                this.actionButton.events.onInputDown.add(() => {
+                    this.player.customParams.mustJump = true;
+                    console.log('1')
+                }, this);
 
-        //Left Arrow
-        this.leftArrow.events.onInputDown.add(() => {
-            this.player.customParams.isMovingLeft = true;
-        }, this);
-        this.leftArrow.events.onInputUp.add(() => {
-            this.player.customParams.isMovingLeft = false;
-        }, this);
-
-        //HOVER
-        this.leftArrow.events.onInputOver.add(() => {
-            this.player.customParams.isMovingLeft = true;
-        }, this);
-        this.leftArrow.events.onInputOut.add(() => {
-            this.player.customParams.isMovingLeft = false;
-        }, this);
+                this.actionButton.events.onInputUp.add(() => {
+                    this.player.customParams.mustJump = false;
+                    console.log('0')
+                }, this);
 
 
+            
+                //Left Arrow
+                this.leftArrow.events.onInputDown.add(() => {
+                    this.player.customParams.isMovingLeft = true;
+                }, this);
+                this.leftArrow.events.onInputUp.add(() => {
+                    this.player.customParams.isMovingLeft = false;
+                }, this);
 
-        //Right Arrow
-        this.rightArrow.events.onInputDown.add(() => {
-            this.player.customParams.isMovingRight = true;
-        }, this);
+                //HOVER
+                this.leftArrow.events.onInputOver.add(() => {
+                    this.player.customParams.isMovingLeft = true;
+                }, this);
+                this.leftArrow.events.onInputOut.add(() => {
+                    this.player.customParams.isMovingLeft = false;
+                }, this);
 
-        this.rightArrow.events.onInputUp.add(() => {
-            this.player.customParams.isMovingRight = false;
-        }, this);
 
-        this.rightArrow.events.onInputOver.add(() => {
-            this.player.customParams.isMovingRight = true;
-        }, this);
-        this.rightArrow.events.onInputOut.add(() => {
-            this.player.customParams.isMovingRight = false;
-        }, this);
 
+                //Right Arrow
+                this.rightArrow.events.onInputDown.add(() => {
+                    this.player.customParams.isMovingRight = true;
+                }, this);
+
+                this.rightArrow.events.onInputUp.add(() => {
+                    this.player.customParams.isMovingRight = false;
+                }, this);
+
+                this.rightArrow.events.onInputOver.add(() => {
+                    this.player.customParams.isMovingRight = true;
+                }, this);
+                this.rightArrow.events.onInputOut.add(() => {
+                    this.player.customParams.isMovingRight = false;
+                }, this);
+        */
 
     },
     createBarrel: function() {
