@@ -1,54 +1,56 @@
-
-
 .bg-black {
-  color: white;
-  background: #000;
+    color: white;
+    background: #000;
 }
+
 #main-header .port-item {
-  width: 25%;
+    width: 25%;
 }
+
 #main-header .port-item:hover {
-  opacity: 0.8;
-  cursor: pointer;
+    opacity: 0.8;
+    cursor: pointer;
 }
+
 @media(min-width: 1199px) {
-  .port-item {
-    padding: 3em !important;
-  }
-
+    .port-item {
+        padding: 3em !important;
+    }
 }
 
- #main-header img {
-     max-height: 345px;
- }
-
-
- @media(min-width: 768px) and (max-width: 991px){
-
-   #main-header img {
-     max-height: 414px;
- }
+#main-header img {
+    max-height: 345px;
 }
 
- @media(min-width: 992px) and (max-width: 1199px){
+@media(min-width: 768px) and (max-width: 991px) {
+    #main-header img {
+        max-height: 414px;
+    }
+}
 
-   #main-header img {
+@media(min-width: 992px) and (max-width: 1199px) {
+    #main-header img {
         max-height: 345px;
- }
+    }
 }
- @media(min-width: 1200px) {
 
-   #main-header img {
+@media(min-width: 1200px) {
+    #main-header img {
         max-height: 395px;
- }
+    }
 }
 
-.works-hover:hover{
-  opacity: 0.9;
-  cursor: pointer;
+.works-hover:hover {
+    opacity: 0.9;
+    cursor: pointer;
 }
-.zoom-hover i:hover{
-    -webkit-transition: all 0.5s; 
-  transition: all 0.5s;
-   transform: scale(2);
+
+.zoom-hover i:hover {
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    transform: scale(2);
+}
+
+.bg-indigo {
+    background: #3f51b5;
 }
