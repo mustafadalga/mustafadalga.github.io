@@ -1,56 +1,165 @@
-.bg-black {
-    color: white;
-    background: #000;
-}
-
-#main-header .port-item {
-    width: 25%;
-}
-
-#main-header .port-item:hover {
-    opacity: 0.8;
-    cursor: pointer;
-}
-
-@media(min-width: 1199px) {
-    .port-item {
-        padding: 3em !important;
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
-}
-
-#main-header img {
-    max-height: 345px;
-}
-
-@media(min-width: 768px) and (max-width: 991px) {
-    #main-header img {
-        max-height: 414px;
+    
+     :root {
+        --bg: #2eca7f;
+        --white: #fff;
     }
-}
-
-@media(min-width: 992px) and (max-width: 1199px) {
-    #main-header img {
-        max-height: 345px;
+    
+    html {
+        font-size: 10px;
     }
-}
-
-@media(min-width: 1200px) {
-    #main-header img {
-        max-height: 395px;
+    
+    body {
+        font-family: 'Roboto', Helvetica, sans-serif;
     }
-}
-
-.works-hover:hover {
-    opacity: 0.9;
-    cursor: pointer;
-}
-
-.zoom-hover i:hover {
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-    transform: scale(2);
-}
-
-.bg-indigo {
-    background: #3f51b5;
-}
+    
+    img {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    a {
+        color: var(--white);
+    }
+    
+    .container {
+        width: 100%;
+        max-width: 100rem;
+        margin: auto;
+    }
+    
+    .personal {
+        margin: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        border-radius: 4rem;
+        box-shadow: 0 1px 6px rgba(0, 0, 52, .25);
+    }
+    
+    .personal-header {
+        display: flex;
+        background-color: var(--bg);
+        padding: 5rem;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        position: relative;
+        min-height: 40rem;
+    }
+    
+    .personal-img {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 0;
+        width: 22.5%;
+    }
+    
+    .personal-img img {
+        position: absolute;
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+        bottom: -2.5rem;
+    }
+    
+    .personal-img img:hover {
+        bottom: -1rem;
+        margin-top: -2.5rem;
+    }
+    
+    .personal-img img {
+        border: 3px solid var(--white);
+    }
+    
+    .personal-head {
+        margin-left: auto;
+        width: 75%;
+        text-align: center;
+        color: var(--white);
+        display: flex;
+        flex-direction: column;
+        grid-row-gap: 1rem;
+        justify-content: center;
+    }
+    
+    .personal-name {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 4.4rem;
+    }
+    
+    .personal-positions {
+        position: relative;
+        height: 2.5rem;
+    }
+    
+    .position {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+        font-size: 1.6rem;
+    }
+    
+    .position.active {
+        opacity: 1;
+        transition: all 0.6s ease-in-out;
+    }
+    
+    .social {
+        display: flex;
+        grid-gap: 1.5rem;
+        justify-content: center;
+    }
+    
+    .social-item {
+        border: 1px solid var(--white);
+        padding: 1rem;
+        border-radius: 50%;
+    }
+    
+    .social-item:hover {
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+        transform: scale(1.5);
+    }
+    
+    i {
+        font-size: 1.5rem;
+    }
+    
+    .personal-body {
+        padding: 5rem;
+        background-color: #f5f5f5;
+        font-size: 1.6rem;
+        color: #424242;
+        border-bottom-left-radius: inherit;
+        border-bottom-right-radius: inherit;
+    }
+    
+    @media screen and (max-width:768px) {
+        .personal-header {
+            flex-direction: column;
+            align-items: center;
+            min-height: auto;
+            grid-gap: 2.5rem;
+        }
+        .personal-head {
+            width: 100%;
+        }
+        .personal-img {
+            position: initial;
+            width: initial;
+            height: 30rem;
+            max-width: 20rem;
+        }
+        .personal-img img {
+            position: initial;
+        }
+    }
