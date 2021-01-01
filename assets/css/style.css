@@ -162,4 +162,7 @@
         .personal-img img {
             position: initial;
         }
+        .personal-positions{
+		margin-bottom: 1rem;	
+	}
     }
