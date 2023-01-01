@@ -169,7 +169,6 @@ input[type=range]::-moz-range-thumb {
 .fullscreen {
     width: 25px;
     height: 15px;
-    //   background: red;
     z-index: inherit;
     position: absolute;
     right: 10px;

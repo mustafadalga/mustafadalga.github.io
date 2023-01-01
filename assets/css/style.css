@@ -121,8 +121,12 @@
         
         .social-item {
             border: 1px solid var(--white);
-            padding: 1rem;
             border-radius: 50%;
+            display: grid;
+            place-items: center;
+            height:36px;
+            width:36px;
+            text-decoration: none;
         }
         
         .social-item:hover {
