@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Mustafa Dalga | Resume</title>
+   <meta charset="utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6EY5GT1BP3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6EY5GT1BP3');
+</script>   
+
+<body style="margin: 0px">
+   <div id="adobe-dc-view"></div>
+   <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
+   <script type="text/javascript">
+      document.addEventListener("adobe_dc_view_sdk.ready", function () {
+         const adobeDCView = new AdobeDC.View({ clientId: "dfe8203b409a41f99b4b7f31c75450f8", divId: "adobe-dc-view" });
+         adobeDCView.previewFile({
+            content: { location: { url: "./cv.pdf" } },
+            metaData: { fileName: "Mustafa-Dalga-CV.pdf" }
+         }, {
+            "showAnnotationTools": false,
+            showBookmarks:false
+         });
+      });
+   </script>
+</body>
+
+</html>
